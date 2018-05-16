@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		E9778C7020A92E65002713A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9778C6F20A92E65002713A6 /* AppDelegate.swift */; };
-		E9778C7220A92E65002713A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9778C7120A92E65002713A6 /* ViewController.swift */; };
 		E9778C7520A92E65002713A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9778C7320A92E65002713A6 /* Main.storyboard */; };
 		E9778C7720A92E69002713A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9778C7620A92E69002713A6 /* Assets.xcassets */; };
 		E9778C7A20A92E69002713A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9778C7820A92E69002713A6 /* LaunchScreen.storyboard */; };
+		E9778C8320A92EC8002713A6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9778C8220A92EC8002713A6 /* Item.swift */; };
+		E9778CCD20ABD397002713A6 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9778CCC20ABD397002713A6 /* ItemsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E9778C6C20A92E65002713A6 /* Kroger Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kroger Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9778C6F20A92E65002713A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9778C7120A92E65002713A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E9778C7420A92E65002713A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9778C7620A92E69002713A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9778C7920A92E69002713A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9778C7B20A92E69002713A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9778C8220A92EC8002713A6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E9778CCC20ABD397002713A6 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,31 @@
 		E9778C6E20A92E65002713A6 /* Kroger Shop */ = {
 			isa = PBXGroup;
 			children = (
+				E9778CC720ABD2D7002713A6 /* Controllers */,
+				E9778C8120A92E8E002713A6 /* Models */,
 				E9778C6F20A92E65002713A6 /* AppDelegate.swift */,
-				E9778C7120A92E65002713A6 /* ViewController.swift */,
 				E9778C7320A92E65002713A6 /* Main.storyboard */,
 				E9778C7620A92E69002713A6 /* Assets.xcassets */,
 				E9778C7820A92E69002713A6 /* LaunchScreen.storyboard */,
 				E9778C7B20A92E69002713A6 /* Info.plist */,
 			);
 			path = "Kroger Shop";
+			sourceTree = "<group>";
+		};
+		E9778C8120A92E8E002713A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9778C8220A92EC8002713A6 /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E9778CC720ABD2D7002713A6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9778CCC20ABD397002713A6 /* ItemsTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +115,7 @@
 				TargetAttributes = {
 					E9778C6B20A92E65002713A6 = {
 						CreatedOnToolsVersion = 9.3.1;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -135,7 +155,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9778C7220A92E65002713A6 /* ViewController.swift in Sources */,
+				E9778C8320A92EC8002713A6 /* Item.swift in Sources */,
+				E9778CCD20ABD397002713A6 /* ItemsTableViewController.swift in Sources */,
 				E9778C7020A92E65002713A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P7XKP3B2C9;
 				INFOPLIST_FILE = "Kroger Shop/Info.plist";
@@ -289,6 +311,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cosmicarrows.Kroger-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P7XKP3B2C9;
 				INFOPLIST_FILE = "Kroger Shop/Info.plist";
@@ -307,6 +332,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cosmicarrows.Kroger-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
