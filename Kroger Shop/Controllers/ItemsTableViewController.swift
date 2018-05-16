@@ -11,7 +11,15 @@ import UIKit
 class ItemsTableViewController: UITableViewController {
     
     var items: [Item] = Item.fake(10)
-
+    
+    @IBAction func didSelectAdd(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController.init(title: "Cancel", message: "Enter item to add to the shopping list:", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Shopping List Items"
