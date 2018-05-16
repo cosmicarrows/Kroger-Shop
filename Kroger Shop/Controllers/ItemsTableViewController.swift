@@ -25,14 +25,13 @@ class ItemsTableViewController: UITableViewController {
             }
         }))
         self.present(alert, animated: true, completion: nil)
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Shopping List Items"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +47,33 @@ class ItemsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = items.remove(at: sourceIndexPath.row)
+        items.insert(item, at: destinationIndexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        }
+    }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        //toggle the isCheckedState
+        item.isChecked = !item.isChecked
+        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.middle)
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
