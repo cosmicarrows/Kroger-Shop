@@ -15,6 +15,15 @@ class ItemsTableViewController: UITableViewController {
     @IBAction func didSelectAdd(_ sender: UIBarButtonItem) {
         let alert = UIAlertController.init(title: "Cancel", message: "Enter item to add to the shopping list:", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction.init(title: "Add", style: .default, handler: { (_) in
+            if let itemName = alert.textFields?[0].text {
+                let itemCount = self.items.count
+                let item = Item.init(name: itemName)
+                self.items.append(item)
+                self.tableView.insertRows(at: [IndexPath.init(row: itemCount, section: 0)], with: .top)
+            }
+        }))
         self.present(alert, animated: true, completion: nil)
         
         
