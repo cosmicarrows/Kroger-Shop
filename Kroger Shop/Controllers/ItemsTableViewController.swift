@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemsTableViewController: UITableViewController {
+class ItemsTableViewController: BaseTableViewController {
     
     //set the items array to default to items loaded from the UserDefaults storage.  Also use DidSet to add behavior for when the array is modified.  Using this didSet will save the items to UserDefaults by calling the save method on the items array.
     var items: [Item] = [Item].load(){
@@ -19,18 +19,12 @@ class ItemsTableViewController: UITableViewController {
     //next update the tableView's didSelectRow method with the toggleCheck method in order to trigger the didSet method to automatically save our items
     
     @IBAction func didSelectAdd(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController.init(title: "Cancel", message: "Enter item to add to the shopping list:", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
-        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction.init(title: "Add", style: .default, handler: { (_) in
-            if let itemName = alert.textFields?[0].text {
-                let itemCount = self.items.count
-                let item = Item.init(name: itemName)
-                self.items.append(item)
-                self.tableView.insertRows(at: [IndexPath.init(row: itemCount, section: 0)], with: .top)
-            }
-        }))
-        self.present(alert, animated: true, completion: nil)
+        requestInput(title: "New shopping list item", message: "Enter item to add to the shopping list:", handler: { (itemName) in
+            let itemCount = self.items.count
+            let item = Item.init(name: itemName)
+            self.items.append(item)
+            self.tableView.insertRows(at: [IndexPath(row: itemCount, section: 0)], with: .top)
+            })
     }
     
     override func viewDidLoad() {
