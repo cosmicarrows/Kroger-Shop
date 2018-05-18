@@ -10,7 +10,13 @@ import UIKit
 
 class ItemsTableViewController: UITableViewController {
     
-    var items: [Item] = Item.fake(10)
+    //set the items array to default to items loaded from the UserDefaults storage.  Also use DidSet to add behavior for when the array is modified.  Using this didSet will save the items to UserDefaults by calling the save method on the items array.
+    var items: [Item] = [Item].load(){
+        didSet {
+            items.save()
+        }
+    }
+    //next update the tableView's didSelectRow method with the toggleCheck method in order to trigger the didSet method to automatically save our items
     
     @IBAction func didSelectAdd(_ sender: UIBarButtonItem) {
         let alert = UIAlertController.init(title: "Cancel", message: "Enter item to add to the shopping list:", preferredStyle: .alert)
@@ -69,10 +75,8 @@ class ItemsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
-        //toggle the isCheckedState
-        item.isChecked = !item.isChecked
-        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.middle)
+        items[indexPath.row] = items[indexPath.row].toggleCheck()
+        tableView.reloadRows(at: [indexPath], with: .middle)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
