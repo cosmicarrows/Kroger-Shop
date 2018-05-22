@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E93EE26320AF77CA00B3F63A /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93EE26220AF77CA00B3F63A /* BaseTableViewController.swift */; };
+		E93EE26520B09C8200B3F63A /* ShoppingLIst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93EE26420B09C8200B3F63A /* ShoppingLIst.swift */; };
+		E95E78E820B4D97D00A00077 /* ShoppingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E78E720B4D97D00A00077 /* ShoppingListTableViewController.swift */; };
 		E9778C7020A92E65002713A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9778C6F20A92E65002713A6 /* AppDelegate.swift */; };
 		E9778C7520A92E65002713A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9778C7320A92E65002713A6 /* Main.storyboard */; };
 		E9778C7720A92E69002713A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9778C7620A92E69002713A6 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		E93EE26220AF77CA00B3F63A /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		E93EE26420B09C8200B3F63A /* ShoppingLIst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingLIst.swift; sourceTree = "<group>"; };
+		E95E78E720B4D97D00A00077 /* ShoppingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewController.swift; sourceTree = "<group>"; };
 		E9778C6C20A92E65002713A6 /* Kroger Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kroger Shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9778C6F20A92E65002713A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9778C7420A92E65002713A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				E9778C8220A92EC8002713A6 /* Item.swift */,
+				E93EE26420B09C8200B3F63A /* ShoppingLIst.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -82,6 +87,7 @@
 			children = (
 				E9778CCC20ABD397002713A6 /* ItemsTableViewController.swift */,
 				E93EE26220AF77CA00B3F63A /* BaseTableViewController.swift */,
+				E95E78E720B4D97D00A00077 /* ShoppingListTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,8 +166,10 @@
 			files = (
 				E9778C8320A92EC8002713A6 /* Item.swift in Sources */,
 				E9778CCD20ABD397002713A6 /* ItemsTableViewController.swift in Sources */,
+				E93EE26520B09C8200B3F63A /* ShoppingLIst.swift in Sources */,
 				E93EE26320AF77CA00B3F63A /* BaseTableViewController.swift in Sources */,
 				E9778C7020A92E65002713A6 /* AppDelegate.swift in Sources */,
+				E95E78E820B4D97D00A00077 /* ShoppingListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

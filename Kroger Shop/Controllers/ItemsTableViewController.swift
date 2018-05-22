@@ -10,10 +10,11 @@ import UIKit
 
 class ItemsTableViewController: BaseTableViewController {
     
+    var list: ShoppingList!
     //set the items array to default to items loaded from the UserDefaults storage.  Also use DidSet to add behavior for when the array is modified.  Using this didSet will save the items to UserDefaults by calling the save method on the items array.
-    var items: [Item] = [Item].load(){
-        didSet {
-            items.save()
+    var items: [Item] {
+        get {
+            return list.items
         }
     }
     //next update the tableView's didSelectRow method with the toggleCheck method in order to trigger the didSet method to automatically save our items
@@ -22,14 +23,14 @@ class ItemsTableViewController: BaseTableViewController {
         requestInput(title: "New shopping list item", message: "Enter item to add to the shopping list:", handler: { (itemName) in
             let itemCount = self.items.count
             let item = Item.init(name: itemName)
-            self.items.append(item)
+            self.list.add(item)
             self.tableView.insertRows(at: [IndexPath(row: itemCount, section: 0)], with: .top)
             })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Shopping List Items"
+        self.title = list.name
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.rightBarButtonItems?.append(editButtonItem)
     }
@@ -57,19 +58,21 @@ class ItemsTableViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = items.remove(at: sourceIndexPath.row)
-        items.insert(item, at: destinationIndexPath.row)
+        list.swapItem(sourceIndexPath.row, destinationIndexPath.row)
+        
+        
+        //items.insert(item, at: destinationIndexPath.row)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            items.remove(at: indexPath.row)
+            list.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
         }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        items[indexPath.row] = items[indexPath.row].toggleCheck()
+        list.toggleCheckItem(atIndex: indexPath.row)
         tableView.reloadRows(at: [indexPath], with: .middle)
     }
     

@@ -10,7 +10,6 @@
 import Foundation
 import UIKit
 
-//conform to the Codable protocol to allow our item to be encoded and decoded to be stored in UserDefaults.UserDefaults
 class Item: Codable {
     var name: String
     var isChecked: Bool
@@ -19,7 +18,6 @@ class Item: Codable {
         self.name = name
         self.isChecked = isChecked
     }
-    
     static func fake(_ count: Int) -> [Item] {
         var items = [Item]()
         for i in 0...count {
@@ -31,12 +29,12 @@ class Item: Codable {
     
     func toggleCheck() -> Item {
         let item = Item.init(name: name, isChecked: !isChecked)
-        return item //!isChecked means false, so its not checked
+        return item
     }
 }
 
 //add an extenstion to Array class to add a save method and a class level load method to save and load items from UserDefaults
-extension Array where Element == Item {
+extension Array where Element == ShoppingList {
     
     func save() {
         let data = try? PropertyListEncoder().encode(self)
@@ -45,8 +43,12 @@ extension Array where Element == Item {
     }
     
     static func load() -> [Element] {
-        if let data = UserDefaults.standard.value(forKey: String(describing: Element.self)) as? Data, let items = try? PropertyListDecoder().decode([Element].self, from: data) {
-            return items
+        if let data = UserDefaults.standard.value(forKey: String(describing: Element.self)) as? Data,
+            let elements = try? PropertyListDecoder().decode([Element].self, from: data) {
+            for element in elements {
+                element.onUpdate = elements.save
+            }
+            return elements
         }
         return []
     }
