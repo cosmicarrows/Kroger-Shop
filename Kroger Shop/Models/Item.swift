@@ -33,13 +33,17 @@ class Item: Codable {
     }
 }
 
-//add an extenstion to Array class to add a save method and a class level load method to save and load items from UserDefaults
+//add an extenstion to the Array type to add a save method which adds functionality to instances and a static load method to save and load all array instances of items from UserDefaults
+//we're also using generic constraints to signifiy array elements that are of type ShoppingLIst
 extension Array where Element == ShoppingList {
     
     func save() {
         let data = try? PropertyListEncoder().encode(self)
+        //self signifiys types that are array types contained to only ShoppingList types
         UserDefaults.standard.set(data, forKey: String(describing: Element.self))
-        UserDefaults.standard.synchronize()
+        //the key and value of the UserDefaults....hashable key is the string describing the element and the value is the encoded data object
+        //UserDefaults.standard.synchronize()
+        
     }
     
     static func load() -> [Element] {
